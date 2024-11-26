@@ -26,7 +26,7 @@ public class Player {
 	}
 
     public void buyProperty(Cell property, int amount) {
-        property.setPlayer(this);
+        ((OwnedCell) property).setPlayer(this);
         if(property instanceof PropertyCell) {
             PropertyCell cell = (PropertyCell)property;
             properties.add(cell);
@@ -176,9 +176,9 @@ public class Player {
 	}
 	
 	public void purchase() {
-		if(getPosition().isAvailable()) {
+		if(((OwnedCell) getPosition()).isAvailable()) {
 			Cell c = getPosition();
-			c.setAvailable(false);
+			((OwnedCell) c).setAvailable(false);
 			if(c instanceof PropertyCell) {
 				PropertyCell cell = (PropertyCell)c;
 				purchaseProperty(cell);
@@ -222,7 +222,7 @@ public class Player {
 	}
 
     public void sellProperty(Cell property, int amount) {
-        property.setPlayer(null);
+        ((OwnedCell) property).setPlayer(null);
         if(property instanceof PropertyCell) {
             properties.remove(property);
         }

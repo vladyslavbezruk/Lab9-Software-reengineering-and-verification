@@ -1,18 +1,12 @@
 package edu.sumdu.monopoly;
 
-public class GoCell extends Cell {
+public abstract class OwnedCell extends Cell {
+
 	private boolean available = true;
 	protected Player owner;
 
-	public GoCell() {
-		super.setName("Go");
-		setAvailable(false);
-	}
-
-	public void playAction() {
-	}
-	
-	void setName(String name) {
+	public OwnedCell() {
+		super();
 	}
 
 	public boolean isAvailable() {
@@ -30,4 +24,5 @@ public class GoCell extends Cell {
 	public void setPlayer(Player player) {
 		this.owner = player;
 	}
+
 }
